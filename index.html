@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Finder - Discover Amazing Recipes</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-utensils"></i>
+                <span>Flavor<span class="text-primary">Finder</span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#recipes" class="nav-link">Recipes</a></li>
+                <li><a href="#favorites" class="nav-link">Favorites</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-favorites" id="navFavorites">
+                <i class="fas fa-heart"></i>
+                <span class="favorites-count" id="favoritesCount">0</span>
+            </div>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Discover <span class="gradient-text">Delicious</span> Recipes
+            </h1>
+            <p class="hero-subtitle">
+                Find thousands of recipes from around the world, save your favorites, and cook amazing meals
+            </p>
+            
+            <div class="hero-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="heroSearchInput" placeholder="Search for recipes... (e.g., pizza, pasta, chicken)">
+                <button id="heroSearchBtn" class="btn-primary">
+                    Search <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Recipes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10k+</span>
+                    <span class="stat-label">Happy Cooks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="section-header">
+                <h2 class="section-title">Find Your Recipe</h2>
+                <p class="section-subtitle">Search by ingredients, cuisine, or dish name</p>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="e.g., chicken, pasta, chocolate...">
+                </div>
+                <button id="searchBtn" class="btn-primary">Find Recipes</button>
+            </div>
+            
+            <div class="category-filters" id="categoryFilters">
+                <!-- Categories will be added by JavaScript -->
+            </div>
+            
+            <div class="trending-tags">
+                <span class="tags-label">Trending:</span>
+                <button class="tag" data-tag="pizza"> Pizza</button>
+                <button class="tag" data-tag="pasta"> Pasta</button>
+                <button class="tag" data-tag="salad"> Salad</button>
+                <button class="tag" data-tag="dessert"> Dessert</button>
+                <button class="tag" data-tag="breakfast"> Breakfast</button>
+            </div>
+        </section>
+
+        <!-- Recipes Section -->
+        <section id="recipes" class="recipes-section">
+            <div class="section-header">
+                <h2 class="section-title">Recipe Results</h2>
+                <div class="view-options">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-grid-2"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="recipesGrid" class="recipes-grid">
+                <!-- Recipe Card 1 - Avocado Toast -->
+                <div class="recipe-card" data-id="1" data-category="breakfast" data-title="avocado toast" data-time="15">
+                    <div class="card-badge">Popular</div>
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=500&auto=format" alt="Avocado Toast">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="1">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Breakfast</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 15 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Avocado Toast</h3>
+                        <p class="card-description">
+                            Creamy avocado on artisan sourdough with red pepper flakes
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="1">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 2 - Pancakes -->
+                <div class="recipe-card" data-id="2" data-category="breakfast" data-title="pancakes" data-time="25">
+                    <div class="card-badge">Trending</div>
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&auto=format" alt="Pancakes">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="2">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Breakfast</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 25 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Fluffy Pancakes</h3>
+                        <p class="card-description">
+                            Stack of buttermilk pancakes with maple syrup and fresh berries
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="2">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 3 - Chicken Burger -->
+                <div class="recipe-card" data-id="3" data-category="lunch" data-title="chicken burger" data-time="30">
+                    <div class="card-badge">New</div>
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format" alt="Chicken Burger">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="3">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Lunch</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 30 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Chicken Burger</h3>
+                        <p class="card-description">
+                            Grilled chicken patty with lettuce, tomato and special sauce
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.0)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="3">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 4 - Margherita Pizza -->
+                <div class="recipe-card" data-id="4" data-category="dinner" data-title="pizza" data-time="40">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format" alt="Pizza">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="4">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Dinner</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 40 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Margherita Pizza</h3>
+                        <p class="card-description">
+                            Classic Italian pizza with fresh basil and mozzarella
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="4">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 5 - Creamy Pasta -->
+                <div class="recipe-card" data-id="5" data-category="dinner" data-title="pasta" data-time="35">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format" alt="Pasta">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="5">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Dinner</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 35 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Creamy Pasta</h3>
+                        <p class="card-description">
+                            Fettuccine in creamy Alfredo sauce with parmesan cheese
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="5">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 6 - Greek Salad -->
+                <div class="recipe-card" data-id="6" data-category="lunch" data-title="salad" data-time="15">
+                    <div class="card-badge">Healthy</div>
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format" alt="Greek Salad">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="6">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Lunch</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 15 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Greek Salad</h3>
+                        <p class="card-description">
+                            Fresh cucumber, tomatoes, olives and feta cheese
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(4.0)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="6">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 7 - Sushi Roll -->
+                <div class="recipe-card" data-id="7" data-category="dinner" data-title="sushi" data-time="45">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=500&auto=format" alt="Sushi">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="7">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Dinner</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 45 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Sushi Roll</h3>
+                        <p class="card-description">
+                            California roll with avocado, cucumber and crab
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="7">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 8 - Chocolate Cake -->
+                <div class="recipe-card" data-id="8" data-category="dessert" data-title="chocolate cake" data-time="60">
+                    <div class="card-badge">Dessert</div>
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format" alt="Chocolate Cake">
+                        <div class="card-overlay">
+                            <button class="quick-view-btn" data-id="8">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-category">Dessert</span>
+                            <span class="card-time">
+                                <i class="far fa-clock"></i> 60 min
+                            </span>
+                        </div>
+                        <h3 class="card-title">Chocolate Cake</h3>
+                        <p class="card-description">
+                            Rich chocolate cake with ganache frosting
+                        </p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <button class="favorite-btn" data-id="8">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="btn-outline" id="loadMoreBtn">
+                    Load More Recipes <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section id="favorites" class="favorites-section">
+            <div class="section-header">
+                <h2 class="section-title">My Favorites</h2>
+                <p class="section-subtitle">Your saved recipes for later</p>
+            </div>
+            
+            <div id="favoritesGrid" class="recipes-grid">
+                <!-- Favorites will be added dynamically by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Flavor Finder</h3>
+                    <p>Discover, cook, and share delicious recipes from around the world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Recipes</h4>
+                        <ul>
+                            <li><a href="#">Breakfast</a></li>
+                            <li><a href="#">Lunch</a></li>
+                            <li><a href="#">Dinner</a></li>
+                            <li><a href="#">Dessert</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h4>Subscribe to our newsletter</h4>
+                <div class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email">
+                    <button class="btn-primary" id="newsletterBtn">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavor Finder. All rights reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div id="quickViewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- Modal content will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
